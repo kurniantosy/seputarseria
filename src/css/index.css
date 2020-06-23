@@ -1,0 +1,63 @@
+body {
+  background-color: #cbdceb;
+}
+
+.navbarbola {
+  background-color: #cbdceb;
+  box-shadow: 0px 4px 10px rgba(146, 145, 145, 0.25);
+}
+
+.font-header {
+  color: #422754;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.link-ref {
+  color: #422754;
+  font-weight: 500;
+}
+
+.homecss {
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  width: 100%;
+}
+
+.homecss .walpapercontent {
+  position: relative;
+  color: white;
+  margin: 10px;
+  padding: 10px;
+  width: 90%;
+  height: 400px;
+  background-image: linear-gradient(
+      rgba(203, 220, 235, 0.623),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url(../assets/walpaper.jpg);
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 3px;
+  box-shadow: 10px 10px 30px rgba(4, 4, 5, 0.39);
+}
+.walpapercontent > .judulberita {
+  width: 35%;
+  position: relative;
+  font-size: 1.9rem;
+  border-radius: 4px;
+  top: 220px;
+  font-weight: 500;
+  padding: 10px;
+}
+.walpapercontent > .desk {
+  width: 45%;
+  background-color: rgba(0, 0, 0, 0.281);
+  position: relative;
+  border-radius: 4px;
+  top: 200px;
+  font-weight: 500;
+  padding: 10px;
+}

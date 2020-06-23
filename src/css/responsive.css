@@ -1,0 +1,13 @@
+@media all and (max-width: 670px) {
+    .walpapercontent>.judulberita {
+        width: 100%;
+        font-size: 1.6rem;
+        background-color: rgba(0, 0, 0, 0.281);
+    }
+
+    .walpapercontent>.desk {
+        width: 100%;
+        font-weight: 400;
+    }
+
+}
