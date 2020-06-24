@@ -10,7 +10,6 @@ var urlsToCache = [
   "/src/assets/256.png",
   "/src/assets/512.png",
   "/index.html",
-  "/article.html",
   "/src/pages/about.html",
   "/src/pages/contact.html",
   "/src/pages/home.html",
@@ -20,7 +19,6 @@ var urlsToCache = [
   "/src/assets/favicon.ico",
   "/src/assets/ikonku.png",
   "/src/assets/walpaper.jpg",
-  "/src/js/api.js",
 ];
 // disini juga aku ubah sesuai file-file yang ada di folder dist, soalnya kan pakai webpack, hehe
 // file materialize tidak dimasukkan, kenapa ? karena sudah di bundling oleh webpack, hehe
