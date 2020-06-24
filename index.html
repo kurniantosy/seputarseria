@@ -7,7 +7,8 @@
   <link rel="shortcut icon" href="/src/assets/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/src/assets/ikonku.png" type="image/x-icon" />
   <link rel="apple-touch-icon" href="/src/assets/apple-ico.png" />
-  <link rel="manifest" href="/manifest.json" /> <!-- Biar mudah, file manifest.json ditaruh di scope yang sama dengan index.html saja-->
+  <link rel="manifest" href="/manifest.json" />
+  <!-- Biar mudah, file manifest.json ditaruh di scope yang sama dengan index.html saja-->
   <title>Seputar Seria-A</title>
 </head>
 
@@ -25,22 +26,6 @@
 
   <div class="body-contents"></div>
 </body>
-<script>
-  // REGISTER SERVICE WORKER
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function () {
-      navigator.serviceWorker
-        .register("/service-worker.js")
-        .then(function () {
-          console.log("Pendaftaran ServiceWorker berhasil");
-        })
-        .catch(function () {
-          console.log("Pendaftaran ServiceWorker gagal");
-        });
-    });
-  } else {
-    console.log("ServiceWorker belum didukung browser ini.");
-  }
-</script>
+<script src="./src/js/main.js"></script>
 
 </html>
