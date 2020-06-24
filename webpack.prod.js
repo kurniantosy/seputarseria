@@ -28,6 +28,11 @@ module.exports = merge(common, {
       patterns: [
         { from: "src/nav.html", to: "src/" },
         { from: "src/pages/", to: "src/pages/" },
+        { from: "service-worker.js" },
+        { from: "manifest.json" },
+        { from: "src/assets/", to: "src/assets" },
+        // Aku ubah beberapa nih, supaya sesuai dengan yang nanti dipakai lokasinya, hehe
+
         /* Ini artinya si webpack copy akan menyalin asset nav.html yang berada di folder src kedalam folder hasil bundling ( dist )*/
       ],
     }),

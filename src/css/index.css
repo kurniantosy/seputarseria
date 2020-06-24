@@ -36,7 +36,7 @@ body {
       rgba(203, 220, 235, 0.623),
       rgba(0, 0, 0, 0.6)
     ),
-    url(../assets/walpaper.jpg);
+    url(/src/assets/walpaper.jpg);
   background-position: 50% 0%;
   background-repeat: no-repeat;
   background-size: cover;
