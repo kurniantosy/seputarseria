@@ -32,10 +32,8 @@ body {
   padding: 10px;
   width: 90%;
   height: 400px;
-  background-image: linear-gradient(
-      rgba(203, 220, 235, 0.623),
-      rgba(0, 0, 0, 0.6)
-    ),
+  background-image: linear-gradient(rgba(203, 220, 235, 0.623),
+      rgba(0, 0, 0, 0.6)),
     url(/src/assets/walpaper.jpg);
   background-position: 50% 0%;
   background-repeat: no-repeat;
@@ -43,7 +41,8 @@ body {
   border-radius: 3px;
   box-shadow: 10px 10px 30px rgba(4, 4, 5, 0.39);
 }
-.walpapercontent > .judulberita {
+
+.walpapercontent>.judulberita {
   width: 35%;
   position: relative;
   font-size: 1.9rem;
@@ -52,7 +51,8 @@ body {
   font-weight: 500;
   padding: 10px;
 }
-.walpapercontent > .desk {
+
+.walpapercontent>.desk {
   width: 45%;
   background-color: rgba(0, 0, 0, 0.281);
   position: relative;
@@ -60,4 +60,59 @@ body {
   top: 200px;
   font-weight: 500;
   padding: 10px;
+}
+
+/* //bola */
+
+.rowbola {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.kartubola {
+  width: 200px;
+  height: 280px;
+  margin: 20px;
+  border-radius: 6px;
+  background: #cbdceb;
+  box-shadow: 19px 19px 38px #b1bfcc, -19px -19px 38px #e5f9ff;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.kartubola .iconbola {
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.iconbola>img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100px;
+}
+
+.kartubola .card-contents {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card-contents>.namateam {
+  font-weight: 600;
+  text-align: center;
+  color: #422754;
+  font-size: 15px;
+  padding: 3px;
+  width: 100%;
+}
+
+.card-contents>p {
+  text-align: center;
+  color: 422754;
 }

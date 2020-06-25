@@ -1,6 +1,6 @@
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
-const CopyPlugin = require("copy-webpack-plugin"); // Ini untuk menginisialisasi plugin webpack-copy-plugin supaya bisa dipanggil
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
@@ -21,8 +21,8 @@ module.exports = merge(common, {
       },
     ],
   },
-  // Jadi aku nambahin " plugins " supaya nantinya ketika proses building, plugins ini akan beraksi
-  // Di pluginsnya aku pakai kan " Copy Webpack Plugin" yang gunanya untuk mengkopy source ke  folder bundling
+  // ketika proses building, plugins ini akan beraksi
+  // Di pluginsnya Copy Webpack Plugin yang gunanya untuk mengkopy source ke  folder bundling
   plugins: [
     new CopyPlugin({
       patterns: [
@@ -33,21 +33,11 @@ module.exports = merge(common, {
         { from: "src/assets/", to: "src/assets" },
         { from: "src/js/main.js", to: "src/js" },
         { from: "src/js/api.js", to: "src/js" },
+        { from: "src/js/db.js", to: "src/js" },
+        { from: "src/js/idb.js", to: "src/js" },
         { from: "article.html" },
-        // Aku ubah beberapa nih, supaya sesuai dengan yang nanti dipakai lokasinya, hehe
-
         /* Ini artinya si webpack copy akan menyalin asset nav.html yang berada di folder src kedalam folder hasil bundling ( dist )*/
       ],
     }),
   ],
 });
-
-/*
-plugins: [
-    new CopyPlugin({
-      patterns: [
-        { from: 'source', to: 'dest' }, sebenarnya seperti ini konfigurasi defaultnya,
-        { from: 'other', to: 'public' }, 
-      ],
-    }),
-  ], */

@@ -37,5 +37,9 @@ module.exports = {
       template: "index.html",
       filename: "index.html",
     }),
+    new HtmlWebpackPlugin({
+      template: "article.html",
+      filename: "article.html",
+    }),
   ], // Aku hapus dulu workbox pluginnya ya :D
 };

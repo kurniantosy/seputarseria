@@ -7,7 +7,6 @@
     <link rel="shortcut icon" href="/src/assets/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/src/assets/ikonku.png" type="image/x-icon" />
     <link rel="apple-touch-icon" href="/src/assets/apple-ico.png" />
-    <link rel="stylesheet" href="/src/css/materialize.min.css">
     <link rel="manifest" href="/manifest.json" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Biar mudah, file manifest.json ditaruh di scope yang sama dengan index.html saja-->
@@ -22,17 +21,22 @@
             <a href="./index.html" class="sidenav-trigger" data-target="nav-mobile">
                 <i class="material-icons">arrow_back</i>
             </a>
-            <ul class="topnav right hide-on-med-and-down"></ul>
-            <ul class="sidenav" id="nav-mobile"></ul>
+
         </div>
     </nav>
     <!-- Akhir Navigasi -->
 
-    <div class="container" id="body-content">lala</div>
+    <div class="container" id="body-content"></div>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red" id="save">
+            <i class="large material-icons">save</i>
+        </a>
+    </div>
 </body>
 <script type="text/javascript" src="https://unpkg.com/snarkdown@1.0.2/dist/snarkdown.umd.js"></script>
-<script src="./src/js/materialize.min.js"></script>
 <script src="./src/js/api.js"></script>
+<script src="./src/js/idb.js"></script>
+<script src="./src/js/db.js"></script>
 <script>
     // REGISTER SERVICE WORKER
     if ("serviceWorker" in navigator) {
@@ -50,7 +54,12 @@
         console.log("ServiceWorker belum didukung browser ini.");
     }
     document.addEventListener("DOMContentLoaded", function () {
+        console.log("tes percobaan")
         getArticleById();
+        var save = document.getElementById("save");
+        save.onclick = () => {
+            console.log("Tombol FAB di kliki.");
+        }
     });
 </script>
 
