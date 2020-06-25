@@ -12,7 +12,7 @@ var urlsToCache = [
   "/index.html",
   "/article.html",
   "/src/pages/about.html",
-  "/src/pages/contact.html",
+  "/src/pages/favorite.html",
   "/src/pages/home.html",
   "/src/pages/klasemen.html",
   "/bundle.js",

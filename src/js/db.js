@@ -1,22 +1,33 @@
-var dbPromised = idb.open("seputar-seria", 1, function (upgradeDb) {
-  var articlesObjectStore = upgradeDb.createObjectStore("teams", {
-    keyPath: "ID",
+let dbPromised = idb.open("seputar-seria", 1, function (upgradeDb) {
+  let articlesObjectStore = upgradeDb.createObjectStore("teams", {
+    keyPath: "id",
+    autoIncrement: false,
   });
-  articlesObjectStore.createIndex("post_title", "post_title", {
+  articlesObjectStore.createIndex("id", "id", {
     unique: false,
   });
 });
 
-function saveForLater(data) {
-  dbPromised
-    .then(function (db) {
-      var tx = db.transaction("seputar-seria", "readwrite");
-      var store = tx.objectStore("seputar-seria");
-      console.log(data);
-      store.add(data);
-      return tx.complete;
-    })
-    .then(function () {
-      console.log("Artikel berhasil di simpan.");
-    });
+function saveForLater(ctx) {
+  console.log("isi ctx ", ctx);
+  dbPromised.then((db) => {
+    const tx = db.transaction("teams", "readwrite");
+    const store = tx.objectStore("teams");
+    store.add(ctx);
+    return tx.complete;
+  });
+}
+
+function getAll() {
+  return new Promise(function (resolve, reject) {
+    dbPromised
+      .then((db) => {
+        var tx = db.transaction("teams", "readonly");
+        var store = tx.objectStore("teams");
+        return store.getAll();
+      })
+      .then((teams) => {
+        resolve(teams);
+      });
+  });
 }

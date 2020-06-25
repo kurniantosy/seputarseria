@@ -66,37 +66,151 @@ function teamSeria(data) {
 }
 
 function getArticleById() {
-  // Ambil nilai query parameter (?id=)
-  var urlParams = new URLSearchParams(window.location.search);
-  var idParam = urlParams.get("id");
-  request(`${base_url}/teams/${idParam}`)
-    .then((el) => {
-      // Objek JavaScript dari response.json() masuk lewat variabel data.
-      console.log("ini el loh", el);
-      // Menyusun komponen card artikel secara dinamis
-      var articleHTML = `
-          <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
+  return new Promise(function (resolve, reject) {
+    // Ambil nilai query parameter (?id=)
+    let urlParams = new URLSearchParams(window.location.search);
+    let idParam = urlParams.get("id");
+    console.log("isi id params", idParam);
+    if ("caches" in window) {
+      caches
+        .match(`${base_url}/teams/${idParam}`, {
+          headers: {
+            "X-Auth-Token": "62f30b942a29438f925d0f01e6cdb9a0",
+          },
+        })
+        .then((response) => {
+          if (response) {
+            response.json().then((el) => {
+              console.log("ini apa chaces,  ", el);
+              var articleHTML = `
+                              <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
               
+                                </div>
+                                <div class="card-content">
+                                  <span class="card-title">${el.address}</span>
+                                  ${snarkdown(el.name)}
+                                </div>
+                                <div>Pernah Juara ${el.activeCompetitions.map(
+                                  (juara) =>
+                                    `<div>Nama Kompetisi : ${juara.name}</div>`
+                                )}</div>
+                              </div>
+                              <div>Nama Team
+                                <ul>
+                                ${el.squad.map(
+                                  (pemain) =>
+                                    `<li>${pemain.name} - ${pemain.position}</li>`
+                                )}
+                                </ul>
+                              </div>
+                    `;
+              document.getElementById("body-content").innerHTML = articleHTML;
+              // Kirim objek data hasil parsing json agar bisa disimpan ke indexed db
+              resolve(el);
+            });
+          }
+        });
+    }
+    request(`${base_url}/teams/${idParam}`)
+      .then((el) => {
+        // Objek JavaScript dari response.json() masuk lewat variabel data.
+        console.log("ini el loh", el);
+        // Menyusun komponen card artikel secara dinamis
+        var articleHTML = `
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+
+          </div>
+          <div class="card-content">
+            <span class="card-title">${el.address}</span>
+            ${snarkdown(el.name)}
+          </div>
+          <div>Pernah Juara ${el.activeCompetitions.map(
+            (juara) => `<div>Nama Kompetisi : ${juara.name}</div>`
+          )}</div>
+          </div>
+          <div>Nama Team
+          <ul>
+          ${el.squad.map(
+            (pemain) => `<li>${pemain.name} - ${pemain.position}</li>`
+          )}
+          </ul>
+          </div>
+      `;
+        // Sisipkan komponen card ke dalam elemen dengan id #content
+        document.getElementById("body-content").innerHTML = articleHTML;
+        // Kirim objek data hasil parsing json agar bisa disimpan ke indexed db
+        resolve(el);
+      })
+      .catch((err) => console.log("error", err));
+  });
+}
+
+function getSavedArticles() {
+  getAll().then(function (favorite) {
+    console.log("isi data fovorite", favorite);
+    // Menyusun komponen card artikel secara dinamis
+    let elemen = document.getElementById("body-content");
+    let articlesHTML = "";
+    favorite.forEach((el) => {
+      articlesHTML += `
+            <div class="kartubola">
+              <a href="./article.html?id=${el.id}&favorite=true">
+                <div class="iconbola waves-effect waves-block waves-light">
+                  <img src="${el.crestUrl}" alt=${el.area.name}/>
+                </div>
+              </a>
+              <div class="card-contents">
+                <span class="namateam">${el.name}</span>
+                <p>Klub ${el.shortName} berlokasi di ${el.address}</p>
+              </div>
             </div>
-            <div class="card-content">
-              <span class="card-title">${el.address}</span>
-              ${snarkdown(el.name)}
-            </div>
-            <div>Pernah Juara ${el.activeCompetitions.map(
-              (juara) => `<div>Nama Kompetisi : ${juara.name}</div>`
-            )}</div>
-            </div>
-            <div>Nama Team
-            <ul>
-            ${el.squad.map(
-              (pemain) => `<li>${pemain.name} - ${pemain.position}</li>`
-            )}
-            </ul>
-            </div>
-        `;
-      // Sisipkan komponen card ke dalam elemen dengan id #content
-      document.getElementById("body-content").innerHTML = articleHTML;
-    })
-    .catch((err) => console.log("error", err));
+            `;
+    });
+
+    elemen.innerHTML = articlesHTML;
+  });
+}
+
+function getSavedArticleById() {
+  let urlParams = new URLSearchParams(window.location.search);
+  let idParam = urlParams.get("id");
+
+  getById(idParam).then((el) => {
+    articleHTML = "";
+    let articleHTML = ` <div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+
+    </div>
+    <div class="card-content">
+      <span class="card-title">${el.address}</span>
+      ${snarkdown(el.name)}
+    </div>
+    <div>Pernah Juara ${el.activeCompetitions.map(
+      (juara) => `<div>Nama Kompetisi : ${juara.name}</div>`
+    )}</div>
+    </div>
+    <div>Nama Team
+    <ul>
+    ${el.squad.map((pemain) => `<li>${pemain.name} - ${pemain.position}</li>`)}
+    </ul>
+    </div>`;
+    // Sisipkan komponen card ke dalam elemen dengan id #content
+    document.getElementById("body-content").innerHTML = articleHTML;
+  });
+}
+
+function getById(id) {
+  return new Promise(function (resolve, reject) {
+    dbPromised
+      .then((db) => {
+        var tx = db.transaction("teams", "readonly");
+        var store = tx.objectStore("teams");
+        return store.get(id);
+      })
+      .then((teams) => {
+        resolve(teams);
+      });
+  });
 }

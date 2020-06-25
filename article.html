@@ -54,11 +54,29 @@
         console.log("ServiceWorker belum didukung browser ini.");
     }
     document.addEventListener("DOMContentLoaded", function () {
-        console.log("tes percobaan")
-        getArticleById();
-        var save = document.getElementById("save");
-        save.onclick = () => {
-            console.log("Tombol FAB di kliki.");
+        let urlParams = new URLSearchParams(window.location.search);
+        let isFromSaved = urlParams.get("favorite");
+        console.log("isi apa ni", isFromSaved)
+        let btnSave = document.getElementById("save");
+
+        if (isFromSaved) {
+            // Hide fab jika dimuat dari indexed db
+            btnSave.style.display = 'none';
+
+            // ambil artikel lalu tampilkan
+            getSavedArticleById();
+        } else {
+            let item = getArticleById();
+        }
+
+        let item = getArticleById();
+        let save = document.getElementById("save");
+        save.onclick = function () {
+            console.log("Tombol FAB di klik.");
+            item.then(function (data) {
+                console.log("isi data tersimpan", data)
+                saveForLater(data);
+            });
         }
     });
 </script>

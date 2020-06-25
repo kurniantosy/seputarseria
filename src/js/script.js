@@ -43,6 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4) {
         let content = document.querySelector(".body-contents");
+        // tambahkan blok if berikut
+        if (page === "home") {
+          getArticles();
+        } else if (page === "favorite") {
+          getSavedArticles();
+        }
+        // ---
         switch (this.status) {
           case 200:
             content.innerHTML = xhttp.responseText;
