@@ -36,6 +36,7 @@ module.exports = merge(common, {
         { from: "src/js/db.js", to: "src/js" },
         { from: "src/js/idb.js", to: "src/js" },
         { from: "article.html" },
+        { from: "src/css/article.css", to: "src/css" },
         /* Ini artinya si webpack copy akan menyalin asset nav.html yang berada di folder src kedalam folder hasil bundling ( dist )*/
       ],
     }),

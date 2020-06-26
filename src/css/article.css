@@ -10,19 +10,13 @@
 }
 
 .article {
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    flex-direction: column;
-    margin: 0;
-    padding: 10px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .article>.cards {
     margin: 0 auto;
     padding: 10px;
-    width: 90%;
+    width: 100%;
 
 }
 
@@ -57,30 +51,70 @@
 .kontainerimage .card-contents {
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin: 20px;
 }
 
-.card-contents li {
-    background-color: #414D6D;
+.sejarahteam li {
     display: flex;
-    border-radius: 5px;
-    flex-direction: column;
-    color: #fff;
-    padding: 5px;
-    margin: 5px;
+    flex-direction: row;
+    color: #422754;
+    margin: 8px;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 14px;
 }
 
+li>.material-icons {
+    margin-right: 10px;
+}
+
+.cards .namateam {
+    margin-top: 25px;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.namateam>li {
+    margin: 10px;
+    padding: 10px;
+    color: #fff;
+    background: #0379CC;
+    border-radius: 5px;
+}
+
+.namateam>li>span {
+    background-color: #FAAC29;
+    margin: 4px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 600;
+}
 
 @media all and (max-width: 670px) {
     .article>.cards {
         margin-top: 30px;
-        margin: 0 auto;
-        padding: 10px;
-        width: 50%;
-        background: #cbdceb;
-        border-radius: 10px;
-        box-shadow: 10px 10px 38px #b1bfcc, -10px -10px 38px #e5f9ff;
     }
+
+    .cards>.kontainerimage {
+        height: 550px;
+        width: 100%;
+    }
+
+
+
+    .sejarahteam li {
+        margin-top: -60px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        color: #422754;
+        margin: 8px;
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+    }
+
 }
