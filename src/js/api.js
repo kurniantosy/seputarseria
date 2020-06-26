@@ -62,7 +62,7 @@ function teamSeria(data) {
                 </div>
               `;
   });
-  document.getElementById("articles").innerHTML = clubBola;
+  document.getElementById("teambola").innerHTML = clubBola;
 }
 
 function getArticleById() {
@@ -85,7 +85,7 @@ function getArticleById() {
               var articleHTML = `
                               <div class="card">
                                 <div class="card-image waves-effect waves-block waves-light">
-              
+
                                 </div>
                                 <div class="card-content">
                                   <span class="card-title">${el.address}</span>
@@ -105,7 +105,7 @@ function getArticleById() {
                                 </ul>
                               </div>
                     `;
-              document.getElementById("body-content").innerHTML = articleHTML;
+              document.getElementById("deskripsiteam").innerHTML = articleHTML;
               // Kirim objek data hasil parsing json agar bisa disimpan ke indexed db
               resolve(el);
             });
@@ -118,28 +118,32 @@ function getArticleById() {
         console.log("ini el loh", el);
         // Menyusun komponen card artikel secara dinamis
         var articleHTML = `
-        <div class="card">
-          <div class="card-image waves-effect waves-block waves-light">
-
+        <div class="cards">
+          <div class="kontainerimage">
+            <div class="image">
+              <img src=${el.crestUrl} alt="logo"/>
+            </div>
+              <div class="card-contents">
+                <ul class="sejarahteam">
+                  <li>Nama Team : ${el.name}</li>
+                  <li>Alamat : ${el.address}</li>
+                  <li>Nama Team : ${el.email}</li>
+                  <li>Nama Team : ${el.phone}</li>
+                  <li>Nama Team : ${el.venue}</li>
+                  </ul>
+              </div>
           </div>
-          <div class="card-content">
-            <span class="card-title">${el.address}</span>
-            ${snarkdown(el.name)}
-          </div>
-          <div>Pernah Juara ${el.activeCompetitions.map(
-            (juara) => `<div>Nama Kompetisi : ${juara.name}</div>`
-          )}</div>
-          </div>
-          <div>Nama Team
+        <div class="namateam">
+          Nama Team
           <ul>
           ${el.squad.map(
             (pemain) => `<li>${pemain.name} - ${pemain.position}</li>`
           )}
           </ul>
-          </div>
+        </div>
       `;
         // Sisipkan komponen card ke dalam elemen dengan id #content
-        document.getElementById("body-content").innerHTML = articleHTML;
+        document.getElementById("deskripsiteam").innerHTML = articleHTML;
         // Kirim objek data hasil parsing json agar bisa disimpan ke indexed db
         resolve(el);
       })
@@ -197,7 +201,7 @@ function getSavedArticleById() {
     </ul>
     </div>`;
     // Sisipkan komponen card ke dalam elemen dengan id #content
-    document.getElementById("body-content").innerHTML = articleHTML;
+    document.getElementById("deskripsiteam").innerHTML = articleHTML;
   });
 }
 

@@ -1,0 +1,86 @@
+.navbarbola {
+    background-color: #cbdceb;
+    box-shadow: 0px 4px 10px rgba(146, 145, 145, 0.25);
+}
+
+.font-header {
+    color: #422754;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.article {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.article>.cards {
+    margin: 0 auto;
+    padding: 10px;
+    width: 90%;
+
+}
+
+.cards>.kontainerimage {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background: #cbdceb;
+    height: 250px;
+    width: 70%;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px #b1bfcc, -13px -13px 20px #e5f9ff;
+}
+
+.kontainerimage .image {
+    width: 250px;
+}
+
+.image>img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 200px;
+}
+
+.card .namateam {
+    border: 3px solid black
+}
+
+.kontainerimage .card-contents {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.card-contents li {
+    background-color: #414D6D;
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
+    color: #fff;
+    padding: 5px;
+    margin: 5px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+
+@media all and (max-width: 670px) {
+    .article>.cards {
+        margin-top: 30px;
+        margin: 0 auto;
+        padding: 10px;
+        width: 50%;
+        background: #cbdceb;
+        border-radius: 10px;
+        box-shadow: 10px 10px 38px #b1bfcc, -10px -10px 38px #e5f9ff;
+    }
+}

@@ -9,15 +9,16 @@
     <link rel="apple-touch-icon" href="/src/assets/apple-ico.png" />
     <link rel="manifest" href="/manifest.json" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./src/css/article.css">
     <!-- Biar mudah, file manifest.json ditaruh di scope yang sama dengan index.html saja-->
     <title>Seputar Seria-A</title>
 </head>
 
 <body>
     <!-- Navigasi -->
-    <nav class="teal lighten-1" role="navigation">
+    <nav class="navbarbola" role="navigation">
         <div class="nav-wrapper container">
-            <a href="#" class="brand-logo" id="logo-container">News Reader</a>
+            <a href="#" class="font-header" id="logo-container">SeputarSeri-A</a>
             <a href="./index.html" class="sidenav-trigger" data-target="nav-mobile">
                 <i class="material-icons">arrow_back</i>
             </a>
@@ -26,7 +27,7 @@
     </nav>
     <!-- Akhir Navigasi -->
 
-    <div class="container" id="body-content"></div>
+    <div class="article" id="deskripsiteam"></div>
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large red" id="save">
             <i class="large material-icons">save</i>
@@ -56,7 +57,6 @@
     document.addEventListener("DOMContentLoaded", function () {
         let urlParams = new URLSearchParams(window.location.search);
         let isFromSaved = urlParams.get("favorite");
-        console.log("isi apa ni", isFromSaved)
         let btnSave = document.getElementById("save");
 
         if (isFromSaved) {
