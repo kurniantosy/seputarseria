@@ -23,6 +23,7 @@ var urlsToCache = [
   "/src/js/api.js",
   "/src/js/idb.js",
   "/src/js/db.js",
+  "/src/js/push.js",
   "/src/css/article.css",
 ];
 // disini juga aku ubah sesuai file-file yang ada di folder dist, soalnya kan pakai webpack, hehe
@@ -72,4 +73,25 @@ self.addEventListener("fetch", function (event) {
         })
     );
   }
+});
+
+self.addEventListener("push", function (event) {
+  var body;
+  if (event.data) {
+    body = event.data.text();
+  } else {
+    body = "Push message no payload";
+  }
+  var options = {
+    body: body,
+    icon: "/src/assets/ikonku.png",
+    vibrate: [100, 50, 100],
+    data: {
+      dateOfArrival: Date.now(),
+      primaryKey: 1,
+    },
+  };
+  event.waitUntil(
+    self.registration.showNotification("Push Notification", options)
+  );
 });
