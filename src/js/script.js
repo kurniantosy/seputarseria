@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Muat daftar tautan menu
         document.querySelectorAll(".topnav, .sidenav").forEach((elm) => {
+          console.log("isi elm", elm);
           elm.innerHTML = xhttp.responseText;
         });
 
@@ -44,11 +45,19 @@ document.addEventListener("DOMContentLoaded", function () {
       if (this.readyState == 4) {
         let content = document.querySelector(".body-contents");
         // tambahkan blok if berikut
-        if (page === "home") {
-          getArticles();
-        } else if (page === "favorite") {
-          getSavedArticles();
+        switch (page) {
+          case "home":
+            getArticles();
+            break;
+          case "favorite":
+            getSavedArticles();
+            break;
+          case "klasemen":
+            getStandingClub();
+          default:
+            break;
         }
+
         // ---
         switch (this.status) {
           case 200:

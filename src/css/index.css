@@ -125,3 +125,273 @@ body {
   text-align: center;
   color: 422754;
 }
+
+
+
+.klasemenheader {
+  width: 100%;
+  position: relative;
+  padding: 10px;
+}
+
+.klasemenheader .jumbotron {
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+  height: 300px;
+  width: 85%;
+  padding: 10px;
+}
+
+.jumbotron>.judulseri {
+  position: absolute;
+  top: 50px;
+  font-weight: 600;
+  color: #23262B;
+  font-size: 2.5rem;
+}
+
+.jumbotron .garis {
+  height: 5px;
+  background-color: #23262B;
+  width: 50px;
+  border-radius: 20px;
+  border: none;
+  position: absolute;
+  top: 140px;
+}
+
+.klasemenheader .standing {
+  display: flex;
+  margin: 0 auto;
+  z-index: 99;
+  position: relative;
+  padding: 10px;
+  width: 90%;
+  border-radius: 10px;
+}
+
+.jumbotron .season {
+  display: flex;
+  align-items: baseline;
+  position: absolute;
+  width: 500px;
+  top: 170px;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.season .start {
+  background-color: #0379CC;
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+
+.season .end {
+  background-color: #FAAC29;
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+
+.standing .responsive-table {
+  margin: 0 auto;
+  width: 100%;
+  margin-top: -50px;
+  /* background: #cbdceb; */
+  /* box-shadow: 10px 10px 38px #b1bfcc, -10px -10px 38px #e5f9ff; */
+}
+
+.responsive-table li {
+  border-radius: 3px;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.responsive-table .table-header {
+  background-color: #0379CC;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #0379CC;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: #cbdceb;
+  box-shadow: 10px 10px 20px #b1bfcc, -10px -10px 20px #e5f9ff;
+}
+
+.responsive-table .table-row {
+  color: #23262B;
+  background: #cbdceb;
+  box-shadow: 10px 10px 20px #b1bfcc, -10px -10px 20px #e5f9ff;
+}
+
+.responsive-table .col-1 {
+  flex-basis: 5%;
+}
+
+.responsive-table .col-2 {
+  flex-basis: 35%;
+}
+
+.responsive-table .col-3 {
+  flex-basis: 10%;
+}
+
+.responsive-table .col-4 {
+  flex-basis: 10%;
+}
+
+.responsive-table .col-5 {
+  flex-basis: 10%;
+}
+
+.responsive-table .col-6 {
+  flex-basis: 10%;
+}
+
+.responsive-table .col-7 {
+  flex-basis: 10%;
+}
+
+
+.fleximg {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.fleximg img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+}
+
+.fleximg span {
+  height: 25px;
+  margin-left: 10px;
+}
+
+
+.about {
+  border-radius: 9px;
+  background: #cbdceb;
+  box-shadow: 7px 7px 23px #adbbc8,
+    -7px -7px 23px #e9fdff;
+  max-width: 405px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30px;
+  position: relative;
+}
+
+.about h2 {
+  margin: 0;
+  padding: 0 1rem;
+}
+
+.about .title {
+  padding: 1rem;
+  text-align: right;
+  color: #23262B;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.about .desc {
+  padding: 0.5rem 1rem;
+  font-size: 12px;
+}
+
+.about .actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+
+.img-avatar {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  border-radius: 50%;
+  border: 6px solid #cbdceb;
+  background-color: #422754;
+  top: 15px;
+  left: 85px;
+}
+
+.about-text {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.title-total {
+  padding: 2.5em 1.5em 1.5em 1.5em;
+}
+
+
+.img-portada {
+  width: 100%;
+}
+
+.portada {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-image: url('../assets/WhatsAp.jpeg');
+  background-position: bottom center;
+  background-size: cover;
+}
+
+.actions button {
+  border: none;
+  background: none;
+  font-size: 24px;
+  color: #23262B;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.actions button:hover {
+  color: #FAAC29;
+  transform: rotate(22deg);
+}
+
+.kartubola button {
+  position: absolute;
+  z-index: 999;
+
+  text-align: center;
+  border: none;
+  background: none;
+
+  transition: .5s;
+}
+
+.kartubola button i {
+  border-radius: 5px;
+  font-size: 25px;
+  background-color: rgba(255, 0, 0, 0.678);
+  width: 35px;
+  line-height: 35px;
+  height: 35px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.kartubola button i:active {
+  color: #FAAC29;
+}

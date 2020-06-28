@@ -20,11 +20,13 @@ var urlsToCache = [
   "/src/assets/favicon.ico",
   "/src/assets/ikonku.png",
   "/src/assets/walpaper.jpg",
+  "/src/assets/WhatsAp.jpeg",
   "/src/js/api.js",
   "/src/js/idb.js",
   "/src/js/db.js",
   "/src/js/push.js",
   "/src/css/article.css",
+  "https://fonts.googleapis.com/icon?family=Material+Icons",
 ];
 // disini juga aku ubah sesuai file-file yang ada di folder dist, soalnya kan pakai webpack, hehe
 // file materialize tidak dimasukkan, kenapa ? karena sudah di bundling oleh webpack, hehe

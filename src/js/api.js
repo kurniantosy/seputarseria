@@ -55,9 +55,8 @@ function teamSeria(data) {
   const elemen = document.getElementById("teambola");
   console.log("ini apa", elemen);
   let clubBola = "";
-  if (data !== undefined) {
-    data.forEach((el) => {
-      clubBola += `
+  data.forEach((el) => {
+    clubBola += `
                   <div class="kartubola">
                     <a href="./article.html?id=${el.id}">
                       <div class="iconbola waves-effect waves-block waves-light">
@@ -70,9 +69,8 @@ function teamSeria(data) {
                     </div>
                   </div>
                 `;
-    });
-    elemen.innerHTML = clubBola;
-  }
+  });
+  elemen.innerHTML = clubBola;
 }
 
 function getArticleById() {
@@ -176,6 +174,7 @@ function getSavedArticles() {
     favorite.forEach((el) => {
       articlesHTML += `
             <div class="kartubola">
+            <button onClick="deleteTeamFav(${el.id});"><i class="material-icons">delete_forever</i></button>
               <a href="./article.html?id=${el.id}&favorite=true">
                 <div class="iconbola waves-effect waves-block waves-light">
                   <img src="${el.crestUrl}" alt=${el.area.name}/>
@@ -184,7 +183,7 @@ function getSavedArticles() {
               <div class="card-contents">
                 <span class="namateam">${el.name}</span>
                 <p>Klub ${el.shortName} berlokasi di ${el.address}</p>
-              </div>
+              </div> 
             </div>
             `;
     });
@@ -246,4 +245,73 @@ function getById(id) {
         resolve(teams);
       });
   });
+}
+
+function showStanding(data) {
+  let standing = "";
+  const standingEl = document.getElementById("klasemensementara");
+
+  data.standings[0].table.forEach(function (el) {
+    console.log("isi standing", el);
+    standing += `
+    <li class="table-row">
+      <div class="col col-1" data-label="Posisi">${el.position}.</div>
+      <div class="col col-2 fleximg" data-label="Team"><img
+      src="${el.team.crestUrl.replace(/^http:\/\//i, "https://")}"
+      width="20px"
+      alt="badge"
+    /><span>${el.team.name}</span></div>
+      <div class="col col-3" data-label="Main">${el.playedGames}</div>
+      <div class="col col-4" data-label="Menang">${el.won}</div>
+      <div class="col col-5" data-label="Seri">${el.draw}</div>
+      <div class="col col-6" data-label="Kalah">${el.lost}</div>
+      <div class="col col-7" data-label="Point">${el.points}</div>
+    </li>
+    `;
+  });
+  console.log("isi data", data);
+  standingEl.innerHTML = `
+  <div class="jumbotron">
+  <h1 class="judulseri">Klasemen Sementara ${data.competition.name}</h1>
+  <hr class="garis" />
+  <div class="season">Season : <span class="start">${data.season.startDate}</span><span class="end">${data.season.endDate}</span></div>
+</div>
+<div class="standing" id="standings">
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Posisi</div>
+      <div class="col col-2">Team</div>
+      <div class="col col-3">Main</div>
+      <div class="col col-4">Menang</div>
+      <div class="col col-5">Seri</div>
+      <div class="col col-6">Kalah</div>
+      <div class="col col-6">Kalah</div>
+    </li>
+      ${standing}
+    </ul>
+    </div>
+  `;
+}
+
+function getStandingClub() {
+  if ("caches" in window) {
+    caches
+      .match(`${base_url}/competitions/2019/standings?standingType=TOTAL`, {
+        headers: {
+          "X-Auth-Token": "62f30b942a29438f925d0f01e6cdb9a0",
+        },
+      })
+      .then((response) => {
+        if (response) {
+          response.json().then((teams) => {
+            showStanding(teams);
+          });
+        }
+      });
+  }
+  fetchApi(`${base_url}/competitions/2019/standings?standingType=TOTAL`).then(
+    (teams) => {
+      showStanding(teams);
+    }
+  );
 }
